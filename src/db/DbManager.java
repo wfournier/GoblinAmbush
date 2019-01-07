@@ -3,13 +3,13 @@ package db;
 import java.sql.*;
 
 public class DbManager {
-    private static String hostName = "batcloud.database.windows.net";;
-    private static String dbName = "DnD";;
-    private static String user = "wfournier";;
-    private static String password = "AeJnr50*RY@o";;
-//    private static String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
-//            + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-    private static String url = "Server=tcp:batcloud.database.windows.net,1433;Initial Catalog=DnD;Persist Security Info=False;User ID=wfournier;Password=AeJnr50*RY@o;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+    private static String hostName = "batcloud.database.windows.net";
+    private static int port = 1443;
+    private static String dbName = "DnD";
+    private static String user = "readonly_log";
+    private static String password = "1231!#ASDF!a";
+    private static String url = String.format("jdbc:sqlserver://%s:%d;database=%s;user=%s@batcloud;password=%s;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
+            hostName, port, dbName, user, password);
     private static Connection connection = null;
 
     public static void open() {
