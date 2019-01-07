@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bigfraction-1.1.0-java7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/bigfraction-1.1.0-java7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
