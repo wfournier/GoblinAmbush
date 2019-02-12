@@ -24,7 +24,7 @@ public class MonsterManager {
                 int exp = rs.getInt("exp");
                 String size = rs.getString("size");
                 String type = rs.getString("type");
-                String tagsRaw = rs.getString("name");
+                String tagsRaw = rs.getString("tags");
                 String alignment = rs.getString("alignment");
                 int hp = rs.getInt("hp");
                 int init = rs.getInt("init");
@@ -32,12 +32,12 @@ public class MonsterManager {
 
                 String[] tags = null;
                 if (tagsRaw != null) {
-                    tags = tagsRaw.split(",");
+                    tags = tagsRaw.split(", ");
                 }
 
                 String[] environments = null;
                 if (envRaw != null) {
-                    environments = envRaw.split(",");
+                    environments = envRaw.split(", ");
                 }
 
                 Monster m = new Monster(name, cr, exp, size, type, tags, alignment, hp, init, environments);
