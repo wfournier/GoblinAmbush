@@ -21,6 +21,10 @@ public enum Difficulty {
         return null;
     }
 
+    public int getValue() {
+        return this.value;
+    }
+
     public boolean equals(Difficulty diff) {
         return value == diff.value;
     }

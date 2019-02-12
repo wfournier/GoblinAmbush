@@ -6,12 +6,14 @@ import main.Observer;
 import java.util.ArrayList;
 
 public class Encounter implements Observer {
+    private Party party;
     private ArrayList<Monster> monsters;
     private float totalCr;
     private int totalExp;
-    private float adjustedExp;
+    private int adjustedExp;
 
-    public Encounter() {
+    public Encounter(Party party) {
+        this.party = party;
         monsters = new ArrayList<>();
         totalCr = 0;
         totalExp = 0;
@@ -30,7 +32,7 @@ public class Encounter implements Observer {
         return totalExp;
     }
 
-    public float getAdjustedExp() {
+    public int getAdjustedExp() {
         return adjustedExp;
     }
 
@@ -85,11 +87,11 @@ public class Encounter implements Observer {
         if (size == 1) {
             adjustedExp = totalExp;
         } else if (size == 2) {
-            adjustedExp = totalExp * 1.5f;
+            adjustedExp = Math.round(totalExp * 1.5f);
         } else if (size >= 3 && size <= 6) {
             adjustedExp = totalExp * 2;
         } else if (size >= 7 && size <= 10) {
-            adjustedExp = totalExp * 2.5f;
+            adjustedExp = Math.round(totalExp * 2.5f);
         } else if (size >= 11 && size <= 14) {
             adjustedExp = totalExp * 3;
         } else { // 15 or more
@@ -105,7 +107,7 @@ public class Encounter implements Observer {
         totalCr = sum;
     }
 
-    public Difficulty getDifficulty(Party party) {
+    public Difficulty getDifficulty() {
         if (party.getDeadly() <= adjustedExp) {
             return Difficulty.DEADLY;
         } else if (party.getHard() <= adjustedExp) {
@@ -117,22 +119,40 @@ public class Encounter implements Observer {
         }
     }
 
-    public void scale(Party party, Difficulty scaleDiff) {
-        Difficulty currentDiff = getDifficulty(party);
+    public void scale(Difficulty scaleDiff) {
+        Difficulty currentDiff = getDifficulty();
         if (currentDiff.equals(scaleDiff)) {
             System.err.println("No changes needed.");
         } else {
             int targetExp = party.getDifficultyExp(scaleDiff);
             if (targetExp < adjustedExp) { // if encounter needs to be scaled DOWN
+//                int gap = adjustedExp - targetExp;
+//
+//                Monster toRemove = null;
+//                Integer toRemoveExp = null;
+//                for (Monster m : monsters) {
+//                    int diff = toRemoveExp == null ? m.getExp() : Math.abs(gap - m.getExp());
+//                    if (toRemove == null || diff < toRemoveExp) { // TODO: find the monster with exp closest to the exp gap
+//                        toRemove = m;
+//                        toRemoveExp = m.getExp();
+//                    }
+//                }
+//                monsters.remove(toRemove);
+//                update();
+
+                int minExpToRemove = adjustedExp - party.getDifficultyMaxExp(scaleDiff);
+                int maxExpToRemove = adjustedExp - party.getDifficultyMinExp(scaleDiff);
+
                 Monster toRemove = null;
                 for (Monster m : monsters) {
-                    float gap = Math.abs(targetExp - adjustedExp);
-                    if (toRemove == null) { // TODO: find the monster with exp closest to the exp gap
-
+                    if(toRemove == null || (m.getExp() >= minExpToRemove && m.getExp() <= maxExpToRemove && toRemove.getExp() > m.getExp())) {
+                        toRemove = m;
                     }
                 }
+                monsters.remove(toRemove);
+                update();
             } else { // if encounter needs to be scaled UP
-
+                // TODO
             }
         }
     }
@@ -153,9 +173,13 @@ public class Encounter implements Observer {
         }
 
         sb.append(String.format("%54s\n" +
-                        "%-35s%8s%11d\n",
+                        "%-35s%8s%11d\n" +
+                        "%-35s%19d\n" +
+                        "%-35s%19s\n",
                 "======================================================",
-                "TOTAL", getTotalCrString(), totalExp));
+                "TOTAL", getTotalCrString(), totalExp,
+                "ADJUSTED", getAdjustedExp(),
+                "DIFFICULTY", getDifficulty()));
 
         return sb.toString();
     }

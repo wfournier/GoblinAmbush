@@ -7,13 +7,7 @@ import java.util.ArrayList;
 
 public class MonsterManager {
 
-    public ArrayList<Monster> searchByName(String n) {
-        String query = "SELECT m.name, m.cr, e.value as exp, m.size, m.type, m.tags, m.alignment, m.hp, m.init, m.environment\n" +
-                "FROM monsters m\n" +
-                "JOIN cr_exp e ON m.cr = e.cr\n" +
-                "WHERE m.name LIKE '%" + n + "%'\n" +
-                "ORDER BY name";
-
+    public ArrayList<Monster> search(String query) {
         ResultSet rs = DbManager.query(query);
         ArrayList<Monster> monsters = new ArrayList<>();
 
@@ -49,5 +43,33 @@ public class MonsterManager {
         }
 
         return monsters;
+    }
+
+    public ArrayList<Monster> searchByName(String n) {
+        String query = "SELECT m.name, m.cr, e.value as exp, m.size, m.type, m.tags, m.alignment, m.hp, m.init, m.environment\n" +
+                "FROM monsters m\n" +
+                "JOIN cr_exp e ON m.cr = e.cr\n" +
+                "WHERE m.name LIKE '%" + n + "%'\n" +
+                "ORDER BY name";
+
+        return search(query);
+    }
+
+    public ArrayList<Monster> searchByExp(int exp) {
+        String query = "SELECT m.name, m.cr, e.value as exp, m.size, m.type, m.tags, m.alignment, m.hp, m.init, m.environment\n" +
+                "FROM monsters m\n" +
+                "INNER JOIN cr_exp e ON m.cr = e.cr AND e.value = " + exp + "\n" +
+                "ORDER BY name";
+
+        return search(query);
+    }
+
+    public ArrayList<Monster> searchByExp(int rangeStart, int rangeEnd) {
+        String query = "SELECT m.name, m.cr, e.value as exp, m.size, m.type, m.tags, m.alignment, m.hp, m.init, m.environment\n" +
+                "FROM monsters m\n" +
+                "INNER JOIN cr_exp e ON m.cr = e.cr AND e.value BETWEEN " + rangeStart + " AND " + rangeEnd + "\n" +
+                "ORDER BY name";
+
+        return search(query);
     }
 }

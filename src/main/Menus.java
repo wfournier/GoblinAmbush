@@ -58,7 +58,7 @@ class Menus {
             if (encounter != null && encounter.getSize() != 0) {
                 System.out.println(encounter.toString());
             } else {
-                encounter = new Encounter();
+                encounter = new Encounter(party);
                 System.out.println("New encounter created!");
             }
 
@@ -150,7 +150,7 @@ class Menus {
     private void scaleEncounter() {
         scaleOptions();
         int choice = in.getIntInput(1, 4);
-        encounter.scale(party, Difficulty.get(choice));
+        encounter.scale(Difficulty.get(choice));
     }
 
     private void scaleOptions() {

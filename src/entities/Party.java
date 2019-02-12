@@ -35,12 +35,20 @@ public class Party implements Observer {
         return sum;
     }
 
+    public int getEasyMaxExp() {
+        return getMedium() - 1;
+    }
+
     public int getMedium() {
         int sum = 0;
         for (Character c : characters) {
             sum += c.getMedium();
         }
         return sum;
+    }
+
+    public int getMediumMaxExp() {
+        return getHard() - 1;
     }
 
     public int getHard() {
@@ -51,12 +59,46 @@ public class Party implements Observer {
         return sum;
     }
 
+    public int getHardMaxExp() {
+        return getDeadly() - 1;
+    }
+
     public int getDeadly() {
         int sum = 0;
         for (Character c : characters) {
             sum += c.getDeadly();
         }
         return sum;
+    }
+
+    public int getDeadlyMaxExp() {
+        return Integer.MAX_VALUE;
+    }
+
+    public int getDifficultyMinExp(Difficulty diff) {
+        switch (diff) {
+            case DEADLY:
+                return getDeadly();
+            case HARD:
+                return getHard();
+            case MEDIUM:
+                return getMedium();
+            default:
+                return 0;
+        }
+    }
+
+    public int getDifficultyMaxExp(Difficulty diff) {
+        switch (diff) {
+            case DEADLY:
+                return Integer.MAX_VALUE;
+            case HARD:
+                return getDeadly() - 1;
+            case MEDIUM:
+                return getHard() - 1;
+            default:
+                return getMedium() - 1;
+        }
     }
 
     public int getDifficultyExp(Difficulty diff) {

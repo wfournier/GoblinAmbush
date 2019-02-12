@@ -38,6 +38,9 @@ public class Monster {
     }
 
     public String getCrString() {
+        if (cr == 0)
+            return "0";
+
         return (cr < 1 ? "1/" + ((int) (1 / cr)) : (int) cr).toString();
     }
 
