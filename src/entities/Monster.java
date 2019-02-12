@@ -38,7 +38,7 @@ public class Monster {
     }
 
     public String getCrString() {
-        return (cr < 1 ? "1/"+((int)(1/cr)) : (int)cr).toString();
+        return (cr < 1 ? "1/" + ((int) (1 / cr)) : (int) cr).toString();
     }
 
     public void setCr(float cr) {

@@ -30,18 +30,22 @@ public class Encounter implements Observer {
         return totalExp;
     }
 
-    public float getAdjustedExp() { return adjustedExp; }
+    public float getAdjustedExp() {
+        return adjustedExp;
+    }
 
-    public float getTotalCr() { return totalCr; }
+    public float getTotalCr() {
+        return totalCr;
+    }
 
     public String getTotalCrString() {
-        if(totalCr % 1 == 0) {
-            return Integer.toString((int)totalCr);
+        if (totalCr % 1 == 0) {
+            return Integer.toString((int) totalCr);
         } else {
             String frac = BigFraction.valueOf(totalCr % 1).toString();
 
-            if(totalCr > 1) {
-                String coeff = Integer.toString((int)Math.floor(totalCr));
+            if (totalCr > 1) {
+                String coeff = Integer.toString((int) Math.floor(totalCr));
 
                 return String.format("%s %s", coeff, frac);
             } else {
@@ -78,15 +82,15 @@ public class Encounter implements Observer {
     private void updateAdjustedExp() {
         int size = getSize();
 
-        if(size == 1) {
+        if (size == 1) {
             adjustedExp = totalExp;
-        } else if(size == 2) {
+        } else if (size == 2) {
             adjustedExp = totalExp * 1.5f;
-        } else if(size >= 3 && size <= 6) {
+        } else if (size >= 3 && size <= 6) {
             adjustedExp = totalExp * 2;
-        } else if(size >= 7 && size <= 10) {
+        } else if (size >= 7 && size <= 10) {
             adjustedExp = totalExp * 2.5f;
-        } else if(size >= 11 && size <= 14) {
+        } else if (size >= 11 && size <= 14) {
             adjustedExp = totalExp * 3;
         } else { // 15 or more
             adjustedExp = totalExp * 4;
@@ -95,18 +99,18 @@ public class Encounter implements Observer {
 
     private void updateTotalCr() {
         float sum = 0;
-        for(Monster m : monsters) {
+        for (Monster m : monsters) {
             sum += m.getCr();
         }
         totalCr = sum;
     }
 
     public Difficulty getDifficulty(Party party) {
-        if(party.getDeadly() <= adjustedExp) {
+        if (party.getDeadly() <= adjustedExp) {
             return Difficulty.DEADLY;
-        } else if(party.getHard() <= adjustedExp) {
+        } else if (party.getHard() <= adjustedExp) {
             return Difficulty.HARD;
-        } else if(party.getMedium() <= adjustedExp) {
+        } else if (party.getMedium() <= adjustedExp) {
             return Difficulty.MEDIUM;
         } else {
             return Difficulty.EASY;
@@ -115,15 +119,15 @@ public class Encounter implements Observer {
 
     public void scale(Party party, Difficulty scaleDiff) {
         Difficulty currentDiff = getDifficulty(party);
-        if(currentDiff.equals(scaleDiff)) {
+        if (currentDiff.equals(scaleDiff)) {
             System.err.println("No changes needed.");
         } else {
             int targetExp = party.getDifficultyExp(scaleDiff);
-            if(targetExp < adjustedExp) { // if encounter needs to be scaled DOWN
+            if (targetExp < adjustedExp) { // if encounter needs to be scaled DOWN
                 Monster toRemove = null;
-                for(Monster m : monsters) {
+                for (Monster m : monsters) {
                     float gap = Math.abs(targetExp - adjustedExp);
-                    if(toRemove == null) { // TODO: find the monster with exp closest to the exp gap
+                    if (toRemove == null) { // TODO: find the monster with exp closest to the exp gap
 
                     }
                 }

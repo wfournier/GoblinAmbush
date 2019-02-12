@@ -44,7 +44,7 @@ public class MonsterManager {
                 monsters.add(m);
             }
             DbManager.close();
-        } catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.err.println("Error querying 'monsters' table.");
         }
 

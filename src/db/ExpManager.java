@@ -10,6 +10,7 @@ import java.util.Map;
 public class ExpManager extends DbManager {
 
     private static Map<Integer, ExpThreshold> thresholds;
+
     static {
         populate();
     }
@@ -21,7 +22,7 @@ public class ExpManager extends DbManager {
 
         try {
             thresholds = new HashMap<>();
-            while(rs.next()) {
+            while (rs.next()) {
                 int level = rs.getInt("level");
                 int easy = rs.getInt("easy");
                 int medium = rs.getInt("medium");
@@ -38,7 +39,7 @@ public class ExpManager extends DbManager {
     }
 
     public static ExpThreshold getThreshold(int level) {
-        if(thresholds == null) {
+        if (thresholds == null) {
             populate();
         }
 

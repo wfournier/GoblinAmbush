@@ -60,11 +60,15 @@ public class Party implements Observer {
     }
 
     public int getDifficultyExp(Difficulty diff) {
-        switch(diff) {
-            case DEADLY: return getDeadly();
-            case HARD: return getHard();
-            case MEDIUM: return getMedium();
-            default: return getEasy();
+        switch (diff) {
+            case DEADLY:
+                return getDeadly();
+            case HARD:
+                return getHard();
+            case MEDIUM:
+                return getMedium();
+            default:
+                return getEasy();
         }
     }
 

@@ -1,20 +1,29 @@
 package db;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+
 import java.sql.*;
 
 public class DbManager {
-    private static String hostName = "batcloud.database.windows.net";
-    private static int port = 1443;
+    private static String serverName = "batcloud.database.windows.net";
+    private static int port = 1433;
     private static String dbName = "DnD";
     private static String user = "readonly_log";
     private static String password = "1231!#ASDF!a";
-    private static String url = String.format("jdbc:sqlserver://%s:%d;database=%s;user=%s@batcloud;password=%s;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
-            hostName, port, dbName, user, password);
+    //    private static String url = String.format("jdbc:sqlserver://%s:%d;database=%s;user=%s@batcloud;password=%s;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
+//            serverName, port, dbName, user, password);
     private static Connection connection = null;
 
     public static void open() {
+        SQLServerDataSource ds = new SQLServerDataSource();
+//        ds.setURL(url);
+        ds.setUser(user);
+        ds.setPassword(password);
+        ds.setServerName(serverName);
+        ds.setPortNumber(port);
+        ds.setDatabaseName(dbName);
         try {
-            connection = DriverManager.getConnection(url);
+            connection = ds.getConnection();
         } catch (SQLException ex) {
             System.err.println("Error connecting to database.");
         }
@@ -23,7 +32,7 @@ public class DbManager {
     public static void close() {
         try {
             connection.close();
-        } catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.err.println("Error closing connection to database.");
         }
     }

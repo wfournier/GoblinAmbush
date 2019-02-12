@@ -48,6 +48,11 @@ class Menus {
     }
 
     private void createEncounter() {
+        if (party == null || party.getSize() == 0) {
+            System.err.println("Please create a party first.");
+            return;
+        }
+
         int option;
         do {
             if (encounter != null && encounter.getSize() != 0) {
