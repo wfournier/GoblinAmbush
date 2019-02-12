@@ -126,20 +126,6 @@ public class Encounter implements Observer {
         } else {
             int targetExp = party.getDifficultyExp(scaleDiff);
             if (targetExp < adjustedExp) { // if encounter needs to be scaled DOWN
-//                int gap = adjustedExp - targetExp;
-//
-//                Monster toRemove = null;
-//                Integer toRemoveExp = null;
-//                for (Monster m : monsters) {
-//                    int diff = toRemoveExp == null ? m.getExp() : Math.abs(gap - m.getExp());
-//                    if (toRemove == null || diff < toRemoveExp) { // TODO: find the monster with exp closest to the exp gap
-//                        toRemove = m;
-//                        toRemoveExp = m.getExp();
-//                    }
-//                }
-//                monsters.remove(toRemove);
-//                update();
-
                 int minExpToRemove = adjustedExp - party.getDifficultyMaxExp(scaleDiff);
                 int maxExpToRemove = adjustedExp - party.getDifficultyMinExp(scaleDiff);
 

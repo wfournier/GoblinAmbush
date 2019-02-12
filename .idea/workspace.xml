@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26b95263-1afc-434a-b6e5-fd89e3b17a02" name="Default Changelist" comment="changed connection string">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GoblinAmbush/db/ExpManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GoblinAmbush/db/ExpManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GoblinAmbush/entities/Encounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GoblinAmbush/entities/Encounter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GoblinAmbush/entities/Party.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GoblinAmbush/entities/Party.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GoblinAmbush/main/Menus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GoblinAmbush/main/Menus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/MonsterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/MonsterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Difficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Difficulty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Encounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Encounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Party.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Menus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Menus.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -142,11 +132,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/entities/Encounter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="255">
+              <caret line="132" column="44" lean-forward="true" selection-start-line="132" selection-start-column="44" selection-end-line="132" selection-end-column="44" />
               <folding>
-                <element signature="e#676#677#0" expanded="true" />
-                <element signature="e#710#711#0" expanded="true" />
+                <element signature="e#736#737#0" expanded="true" />
+                <element signature="e#770#771#0" expanded="true" />
                 <element signature="e#743#744#0" expanded="true" />
                 <element signature="e#773#774#0" expanded="true" />
               </folding>
@@ -292,7 +282,7 @@
     <property name="DatabaseDriversLRU" value="azure" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550009293670" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550009708347" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mssql-jdbc-7.2.1.jre8.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -362,7 +352,7 @@
       <workItem from="1546886350197" duration="2395000" />
       <workItem from="1546904431873" duration="996000" />
       <workItem from="1546905787645" duration="100000" />
-      <workItem from="1549987140695" duration="12838000" />
+      <workItem from="1549987140695" duration="13253000" />
     </task>
     <task id="LOCAL-00001" summary="changed connection string">
       <created>1546904943754</created>
@@ -375,7 +365,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74137000" />
+    <option name="totallyTimeSpent" value="74552000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -594,11 +584,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Encounter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="255">
+          <caret line="132" column="44" lean-forward="true" selection-start-line="132" selection-start-column="44" selection-end-line="132" selection-end-column="44" />
           <folding>
-            <element signature="e#676#677#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
             <element signature="e#743#744#0" expanded="true" />
             <element signature="e#773#774#0" expanded="true" />
           </folding>
