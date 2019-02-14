@@ -44,9 +44,8 @@ public class DbManager {
             }
 
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
 
-            return rs;
+            return statement.executeQuery(query);
         } catch (SQLException ex) {
             System.err.println("Error querying table.");
         }
